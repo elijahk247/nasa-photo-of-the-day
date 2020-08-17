@@ -6,6 +6,13 @@ import Body from './Body';
 
 import { nasaSite, nasaKey } from './Constants'
 import Axios from "axios";
+import styled from 'styled-components'
+
+
+// utilizing styled-components instead of the App css file 
+const StyledDiv = styled.div `
+  text-align: center;
+`
 
 function App() {
   const [title, setTitle] = useState('Nasa Picture of the Day');
@@ -37,11 +44,12 @@ function App() {
   }, [keyCounter])
 
   return (
-    <div className="App">
+    //<div className="App">
+    <StyledDiv>
       <Header title={title} setTitle={setTitle} date={date} setDate={setDate} />     
       <Body picture={picture} setPicture={setPicture}
         explanation={explanation} setExplanation={setExplanation} keyCounter={keyCounter} toggleExplantion={toggleExplanation}/>
-    </div>
+    </StyledDiv>
   );
 }
 
