@@ -11,10 +11,11 @@ function App() {
   const [title, setTitle] = useState('Nasa Picture of the Day');
   const [picture, setPicture] = useState('');
   const [date, setDate] = useState('');
-  const [keyCounter, setKeyCounter] = useState(0);
+  const [keyCounter, setKeyCounter] = useState(1);
+  const [explanation, setExplanation] = useState('');
 
-  const refreshDate = () => {
-    setKeyCounter(keyCounter + 1);
+  const toggleExplanation = () => {
+    keyCounter === 1 ? setKeyCounter(null) : setKeyCounter(1);
   }
 
   useEffect(() => {
@@ -30,24 +31,16 @@ function App() {
 
         console.log(keyCounter)
       })
-      .then(res => {
-        const picTitle = res.data.title;
-        const picDate = res.data.date;
-        const picLink = res.data.url;
-
-        setTitle(picTitle);
-        setPicture(picLink);
-        setDate(picDate);
-      })
       .catch(err => {
         console.log("Error: ", err)
       })
-  }, [keyCounter]);
+  }, [keyCounter])
 
   return (
     <div className="App">
-      <Header title={title} setTitle={setTitle} date={date} setDate={setDate} refreshDate={refreshDate}/>     
-      <Body picture={picture} setPicture={setPicture}/>
+      <Header title={title} setTitle={setTitle} date={date} setDate={setDate} />     
+      <Body picture={picture} setPicture={setPicture}
+        explanation={explanation} setExplanation={setExplanation} keyCounter={keyCounter} toggleExplantion={toggleExplanation}/>
     </div>
   );
 }

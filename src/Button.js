@@ -5,9 +5,9 @@ import { nasaSite, nasaKey } from './Constants'
 
 
 export default function Button(props) {
-    const { date, setDate, refreshDate } = props;
+    const { toggleExplanation } = props;
     
     return(
-        <button onClick={props.refreshDate}>Refresh the date</button>
+        <button onClick={props.toggleExplanation}>Toggle Explanation</button>
     )
 }
