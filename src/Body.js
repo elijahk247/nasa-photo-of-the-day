@@ -2,9 +2,14 @@ import React, { useState, useEffect } from 'react';
 import "./App.css";
 
 import Axios from 'axios'
+import styled from 'styled-components'
 import { nasaSite, nasaKey } from './Constants'
 
 import Button from './Button'
+
+const StyledImg = styled.img `
+    width: 100%;
+`
 
 export default function Body(props) {
     const { picture, setPicture, explanation, setExplanation, keyCounter, toggleExplanation} = props;
@@ -26,7 +31,7 @@ export default function Body(props) {
 
     return(
         <div>
-            <img src={props.picture}/>
+            <StyledImg src={props.picture}/>
 
             <Button toggleExplanation={props.toggleExplanation} />
             {
