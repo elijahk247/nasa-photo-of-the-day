@@ -11,6 +11,11 @@ function App() {
   const [title, setTitle] = useState('Nasa Picture of the Day');
   const [picture, setPicture] = useState('');
   const [date, setDate] = useState('');
+  const [keyCounter, setKeyCounter] = useState(0);
+
+  const refreshDate = () => {
+    setKeyCounter(keyCounter + 1);
+  }
 
   useEffect(() => {
     // make sure to use template literals
@@ -22,6 +27,8 @@ function App() {
         console.log(res.data.title);
         console.log(res.data.explanation);
         console.log(res.data.url);
+
+        console.log(keyCounter)
       })
       .then(res => {
         const picTitle = res.data.title;
@@ -35,11 +42,11 @@ function App() {
       .catch(err => {
         console.log("Error: ", err)
       })
-  }, [date]);
+  }, [keyCounter]);
 
   return (
     <div className="App">
-      <Header />     
+      <Header title={title} setTitle={setTitle} date={date} setDate={setDate} refreshDate={refreshDate}/>     
       <Body picture={picture} setPicture={setPicture}/>
     </div>
   );

@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios'
 
-export default function Button() {
+import { nasaSite, nasaKey } from './Constants'
+
+
+export default function Button(props) {
+    const { date, setDate, refreshDate } = props;
+    
     return(
-        <button>Refresh the date</button>
+        <button onClick={props.refreshDate}>Refresh the date</button>
     )
 }
